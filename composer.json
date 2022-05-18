@@ -8,7 +8,8 @@
             "role": "QA engineer"
         }],
     "require": {
-        "php-webdriver/webdriver": "^1.12"
+        "php-webdriver/webdriver": "^1.12",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
