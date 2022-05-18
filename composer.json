@@ -1,0 +1,18 @@
+{
+    "name": "ivpel/vigilant",
+    "description": "Minimalistic framework for functional automated testing based on php-webdriver.",
+    "authors": [
+        {
+            "name": "Ivan Pelykh",
+            "email": "ivan.pelykh@smile-ukraine.com",
+            "role": "QA engineer"
+        }],
+    "require": {
+        "php-webdriver/webdriver": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vigilant\\": "src/"
+        }
+    }
+}
