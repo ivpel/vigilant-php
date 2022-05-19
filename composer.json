@@ -4,8 +4,7 @@
     "authors": [
         {
             "name": "Ivan Pelykh",
-            "email": "ivan.pelykh@protonmail.com",
-            "role": "QA engineer"
+            "email": "ivan.pelykh@protonmail.com"
         }],
     "require": {
         "php-webdriver/webdriver": "^1.12",
