@@ -1,15 +1,19 @@
 {
     "name": "ivpel/vigilant",
     "description": "Minimalistic framework for functional automated testing based on php-webdriver.",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Ivan Pelykh",
             "email": "ivan.pelykh@protonmail.com"
         }],
     "require": {
+        "php": ">=8.1",
         "php-webdriver/webdriver": "^1.12",
         "phpunit/phpunit": "^9.5"
     },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Vigilant\\": "src/"
