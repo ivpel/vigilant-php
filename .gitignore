@@ -91,7 +91,7 @@ secring.*
 *.fsdb
 
 # Default name of the simulation executable.  A different name can be
-# specified with this switch (the associated daidir database name is
+# specified with this switch (the associated daidir data name is
 # also taken from here):  -o <path>/<filename>
 simv
 
@@ -108,7 +108,7 @@ csrc/
 # used to write all messages from simulation:  -l <filename>
 *.log
 
-# Coverage results (generated with urg) and database location.  The
+# Coverage results (generated with urg) and data location.  The
 # following switch can also be used:  urg -dir <coverage_directory>.vdb
 simv.vdb/
 urgReport/
@@ -330,7 +330,7 @@ cmake-build-*/
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
-# File-based project format
+# File-d project format
 *.iws
 
 # IntelliJ
@@ -351,7 +351,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Editor-based Rest Client
+# Editor-d Rest Client
 .idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
