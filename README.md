@@ -5,7 +5,9 @@ Vigilant is minimalistic framework for functional/regression testing without blo
 
 It was build on top of `php-webdriver` and `phpunit` following KISS principle.
 
-**phpunit** - is main entrypoint for your tests to run and configure them, while **Vigilant** provide additional methods to help with functional testing.
+**phpunit** - is main entrypoint for your tests to run and configure them.
+
+**Vigilant** just provide additional methods to help with functional testing.
 You still have all features which `phpunit` has (create new extensions, write hooks, implement listeners, etc.)
 but with additional assertions (see, dontSee, seeCookie, etc.) and methods for interacting with web page (click, fillField,
 scrollTo, etc.,).
@@ -16,10 +18,10 @@ composer require ivpel/vigilant
 ```
 
 ## Create first test
-It will be good, if you are familiar with PHPunit framework, if not - 
-it is still ok:)
+It will be good, if you are familiar with PHPUnit framework, if not - 
+it is still ok.
 
-Let's write our first test. Create file `VigilantTest.php` (or you can choose another name, but make sure to follow this 
+Create file `VigilantTest.php` (or you can choose another name, but make sure to follow this 
 pattern `{name}Test.php`) inside `tests/` directory.
 ```php
 <?php
@@ -32,21 +34,31 @@ class VigilantTest extends VigilantTestCase
 
     public function setUp(): void
     {
+        # Starting browser session on our Selenium server
         $this->driver = RemoteWebDriver::createNewSession();
     }
 
     public function testFirstVigilantExample()
     {
-        $this->get('');
+        # Go to page https://phpunit.de/ 
+        $this->get('https://phpunit.de/');
+        
+        # Assert that we don't see word Vigilant in page title
         $this->assertDontSeeInTitle('Vigilant');
+        
+        # Assert that we see tag h1 with text Welcome to PHPUnit
         $this->assertSee('//h1[text()="Welcome to PHPUnit!"]');
 
+        # Clicking on button with selector '//a[@class="btn btn-start"]'
         $this->click('//a[@class="btn btn-start"]');
+        
+        # Asserting that we see in URI /getting-started/ 
         $this->assertSeeInUrl('/getting-started/');
     }
 
     public function tearDown(): void
     {
+        # Close browser session after test completed
         $this->driver->close();
     }
 }
@@ -54,25 +66,25 @@ class VigilantTest extends VigilantTestCase
 ```
 
 ### Run tests using `phpunit.xml.dist` configuration
-I assume that you have Selenium server up and running.
+You need to have Selenium server up and running.
 
 In order to run the tests, we need to declare the environment variables that are used to run the tests. Let's do it through a 
 `phpunit.xml.dist` file, which is the native way for the PHPUnit framework.
 We will use the following variables:
 
-**BASE_URL** - URL which will be used as base for all get() methods.
+**BASE_URL** - URL which will be used as base for all get() methods (you can leave it empty for this test).
 
 **BROWSER** - browser you used in your selenium server.
 
 **SELENIUM_HOST** - address of your selenium server.
 
-**WAIT_TIMEOUT** - timeout user for interactions.
+**WAIT_TIMEOUT** - timeout for interactions before throwing error.
 ```shell
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
     <php>
         <!-- Environment variables -->
-        <env name="BASE_URL" value="https://phpunit.de/"/>
+        <env name="BASE_URL" value=""/>
         <env name="BROWSER" value="CHROME"/>
         <env name="SELENIUM_HOST" value="http://127.0.0.1:4444/wd/hub"/> <!-- Add your selenium host address here -->
         <env name="WAIT_TIMEOUT" value="5"/>
@@ -97,12 +109,12 @@ OK (1 test, 3 assertions)
 ```
 **Nice!**
 
-### How **BASE_URL** and **get()** method works?
+### How `get()` method works when you add value to BASE_URL env?
 
 If you configure as `<env name="BASE_URL" value="https://phpunit.de/"/>` then
-method **get()** will provide you to this address https://phpunit.de/
+method `get("/")` will provide you to this address https://phpunit.de/
 
-If you need specific path - just add path as argument to **get()** method, it will concatenate them and provide you full path.
+If you need specific path - just add path as argument to `get()` method, it will concatenate them and provide you full path.
 
 `$this->get("/documentation.html")` will return you this page `https://phpunit.de/documentation.html`
 
