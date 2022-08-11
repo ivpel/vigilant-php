@@ -10,12 +10,12 @@ trait WaitersTrait
 {
     use FinderTrait, LoggerTrait;
 
-    private function getTimeout()
+    private function getTimeout(): bool|array|string
     {
         return getenv('WAIT_TIMEOUT');
     }
 
-    private function getSearchTimeIntervalInMillisecond()
+    private function getSearchTimeIntervalInMillisecond(): bool|array|string
     {
         return getenv('SEARCH_TIME_INTERVAL');
     }

@@ -12,7 +12,7 @@ use Facebook\WebDriver\WebDriverDimension;
  */
 trait BrowserTrait
 {
-    private function getBaseUrl()
+    private function getBaseUrl(): bool|array|string
     {
         return getenv('BASE_URL');
     }
@@ -126,7 +126,7 @@ trait BrowserTrait
      * @param $scriptArguments
      * @return BrowserTrait
      */
-    public function executeScript(string $jsScript, $scriptArguments = null)
+    public function executeScript(string $jsScript, $scriptArguments = null): static
     {
         $this->log(
             'Executing JS script:
