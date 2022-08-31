@@ -1,9 +1,9 @@
 # Vigilant
 
 
-Vigilant is minimalistic framework for functional/regression testing without bloated dependencies.
+Minimalistic framework for functional/regression testing.
 
-It was build on top of `php-webdriver` and `phpunit` following KISS principle.
+`php-webdriver` and `phpunit` bundled together, with some additional to make functional testing fast and easy.
 
 **phpunit** - is main entrypoint for your tests to run and configure them.
 
@@ -26,12 +26,13 @@ pattern `{name}Test.php`) inside `tests/` directory.
 ```php
 <?php
 
-use Vigilant\Component\VigilantTestCase;
 use Vigilant\WebDriver\RemoteWebDriver;
+use Vigilant\Traits\InteractionTrait;
 
-class VigilantTest extends VigilantTestCase
+class VigilantTest extends \PHPUnit\Framework\TestCase
 {
-
+    use InteractionTrait;
+    
     public function setUp(): void
     {
         # Starting browser session on our Selenium server
@@ -69,7 +70,7 @@ class VigilantTest extends VigilantTestCase
 You need to have Selenium server up and running.
 
 In order to run the tests, we need to declare the environment variables that are used to run the tests. Let's do it through a 
-`phpunit.xml.dist` file, which is the native way for the PHPUnit framework.
+`phpunit.xml.dist` file, which is the native way for the `PHPUnit` framework.
 We will use the following variables:
 
 **BASE_URL** - URL which will be used as base for all get() methods (you can leave it empty for this test).
