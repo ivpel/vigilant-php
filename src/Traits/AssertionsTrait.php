@@ -86,7 +86,7 @@ trait AssertionsTrait
      */
     public function assertSee($elementSelector): self
     {
-         if (is_array($elementSelector)) {
+        if (is_array($elementSelector)) {
             foreach ($elementSelector as $item) {
                 assertEquals(
                     1,
@@ -95,13 +95,13 @@ trait AssertionsTrait
                 );
             }
         } elseif (is_string($elementSelector)) {
-             assertEquals(
-                 1,
-                 $this->countVisibleElements($elementSelector),
-                 sprintf('Expected 1 elements, but found %s ', $this->countVisibleElements($elementSelector))
-             );
-         }
-         return $this;
+            assertEquals(
+                1,
+                $this->countVisibleElements($elementSelector),
+                sprintf('Expected 1 elements, but found %s ', $this->countVisibleElements($elementSelector))
+            );
+        }
+        return $this;
     }
 
     /**
@@ -206,6 +206,23 @@ trait AssertionsTrait
         assertTrue(
             (str_contains($this->driver->getCurrentURL(), $urlPartString)),
             'Current page URL does not contain ' . $urlPartString);
+        return $this;
+    }
+
+    /**
+     * Check that text $text is available on the page.
+     *
+     * @param string $text
+     * @return AssertionsTrait|InteractionTrait
+     */
+    public function assertSeeText(string $text): self
+    {
+        $selectorWithText = '//*[text()="' . $text . '"]';
+
+        assertTrue(
+            ($this->countVisibleElements($text) > 0),
+            sprintf('Element with text %s was not found on the current page.', $this->countVisibleElements($text))
+        );
         return $this;
     }
 
