@@ -220,8 +220,8 @@ trait AssertionsTrait
         $selectorWithText = '//*[text()="' . $text . '"]';
 
         assertTrue(
-            ($this->countVisibleElements($text) > 0),
-            sprintf('Element with text %s was not found on the current page.', $this->countVisibleElements($text))
+            ($this->countVisibleElements($selectorWithText) > 0),
+            sprintf('Element with text %s was not found on the current page.', $this->countVisibleElements($selectorWithText))
         );
         return $this;
     }
