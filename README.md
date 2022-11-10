@@ -1,5 +1,8 @@
 # Vigilant
 
+## This repo is archived. Now Vigilant project is here  [Vigilant kit](https://github.com/ivpel/vigilant-kit) 
+You can fork it and do whatever you want:)
+
 
 Minimalistic framework for functional/regression testing.
 
@@ -118,8 +121,3 @@ method `get("/")` will provide you to this address https://phpunit.de/
 If you need specific path - just add path as argument to `get()` method, it will concatenate them and provide you full path.
 
 `$this->get("/documentation.html")` will return you this page `https://phpunit.de/documentation.html`
-
-
-### TODO list
-- [ ] Add proper documentation
-- [ ] Add bash script for local deployment for Selenium Standalone Server
